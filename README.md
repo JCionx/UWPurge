@@ -4,7 +4,7 @@ UWPurge is a PowerShell script that removes almost all Windows UWP apps, and rep
 
 ![](src/1.png)
 
-Windows 11's built-in apps are built on the UWP framwork. This framework allows developers to build beautiful apps, but at the cost of performance.By replacing the Windows UWP apps with fast Win32 apps, the Windows experience gets much snappier, specially on weaker hardware.
+Windows 11's built-in apps are built on the UWP framework. This framework allows developers to build beautiful apps, but at the cost of performance.By replacing the Windows UWP apps with fast Win32 apps, the Windows experience gets much snappier, specially on weaker hardware.
 
 UWPurge also features a custom taskbar and start menu, because the default taskbar and start menu have UWP components as well.
 
