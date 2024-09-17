@@ -32,6 +32,7 @@ Write-Host -ForegroundColor Cyan "[#] Downloading CustomAppsList file..."
 Invoke-WebRequest https://raw.githubusercontent.com/JCionx/UWPurge/master/assets/CustomAppsList -OutFile CustomAppsList
 
 Write-Host -ForegroundColor Cyan "[#] Running Win11Debloat script..."
+Set-ExecutionPolicy Bypass -Scope Process -Force
 .\Win11Debloat.ps1 -HideGallery -DisableRecall -DisableCopilot -DisableWidgets -HideChat -HideTaskview -HideSearchTb -TaskbarAlignLeft -ShowKnownFileExt -DisableSuggestions -DisableBing -DisableTelemetry -ClearStartAllUsers -DisableDVR -RemoveGamingApps -RemoveDevApps -RemoveW11Outlook -RemoveCommApps -RemoveAppsCustom -ForceRemoveEdge -Silent
 Write-Host -ForegroundColor Cyan "[#] Removing UWP notepad..."
 Get-AppxPackage *Microsoft.WindowsNotepad* | Remove-AppxPackage
