@@ -3,10 +3,21 @@ Add-Type -AssemblyName PresentationCore,PresentationFramework
 cd $env:UserProfile
 
 
+# Install winget dependencies
+
+Write-Host -ForegroundColor Cyan "[#] Downloading Microsoft UI XAML package"
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile msuixaml.msixbundle
+
+Write-Host -ForegroundColor Cyan "[#] Installing Microsoft UI XAML package..."
+Add-AppxPackage -Path ".\msuixaml.msixbundle"
+
+Write-Host -ForegroundColor Cyan "[#] Removing Microsoft UI XAML package..."
+Remove-Item ".\msuixaml.msixbundle"
+
 # Enable winget
 
 Write-Host -ForegroundColor Cyan "[#] Downloading WinGet package"
-$ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest https://aka.ms/getwinget -OutFile winget.msixbundle
 
 Write-Host -ForegroundColor Cyan "[#] Installing WinGet package..."
