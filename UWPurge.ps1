@@ -62,7 +62,21 @@ Write-Host -ForegroundColor Cyan "[#] Installing VLC..."
 winget install VideoLAN.VLC
 
 Write-Host -ForegroundColor Cyan "[#] Installing ExplorerPatcher..."
-winget install valinet.ExplorerPatcher
+
+Add-MpPreference -ExclusionPath "C:\Program Files\ExplorerPatcher"
+Add-MpPreference -ExclusionPath "$env:APPDATA\ExplorerPatcher"
+Add-MpPreference -ExclusionPath "C:\Windows\dxgi.dll"
+Add-MpPreference -ExclusionPath "C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy"
+Add-MpPreference -ExclusionPath "C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy"
+
+Invoke-WebRequest https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe -OutFile ExplorerPatcher.exe
+start ExplorerPatcher.exe
+Write-Host ""
+Write-Host -ForegroundColor Red "Click ENTER when the ExplorerPatcher installer finishes"
+pause
+
+Remove-Item .\ExplorerPatcher.exe
+
 
 Write-Host -ForegroundColor Cyan "[#] Installing OpenShell..."
 winget install --id "Open-Shell.Open-Shell-Menu" --source winget --silent --custom 'ADDLOCAL=StartMenu'
